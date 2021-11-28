@@ -28,13 +28,21 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $fileName = $request->file('file')->store('products');
+        // $fileName='';
+        // if($request->file) {
+        //     $img = $request->file('file');
+        //     $destinationPath = public_path('/products/'); // upload path
+		// 	$media_name = time().rand().'.'.$img->getClientOriginalExtension();
+		// 	$img->move($destinationPath, $media_name);
+		// 	$fileName = 'products/'.$media_name;
+        // }
         $product = Product::create([
             'name'=>$request->name,
             'price'=>$request->price,
             'description'=>$request->description,
             'file_path'=>$fileName
         ]);
-        return $product;
+        return 'hello';
     }
 
     /**
